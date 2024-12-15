@@ -1,0 +1,97 @@
+/* Sfondo generale della dashboard */
+.dashboard {
+  background: linear-gradient(to bottom, #1c1f26, #2e3440);
+  min-height: 100vh;
+  padding: 20px;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Stile dell'intestazione */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #61dafb;
+  margin: 0;
+}
+
+/* Contenitore della tabella */
+.table-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #444;
+}
+
+th {
+  background-color: #3b4049;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+td {
+  color: #e0e0e0;
+}
+
+tr:hover {
+  background-color: #383d47;
+}
+
+/* Stile immagini criptovalute */
+.crypto-image {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.crypto-link {
+  text-decoration: none;
+  color: #61dafb;
+}
+
+.crypto-link:hover {
+  text-decoration: underline;
+}
+
+/* Cambiamento percentuale di prezzo */
+.positive {
+  color: #4caf50; /* Verde */
+}
+
+.negative {
+  color: #f44336; /* Rosso */
+}
+
+.equals {
+  color: #fbc02d; /* Giallo */
+}
+
+/* Caricamento */
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-top: 50px;
+}

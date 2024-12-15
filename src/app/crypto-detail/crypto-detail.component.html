@@ -1,0 +1,31 @@
+<div class="crypto-container">
+  <div class="crypto-card" *ngIf="cryptoDetails">
+    <div class="card-header">
+      <img [src]="cryptoDetails.image.large" alt="{{ cryptoDetails.name }}" class="crypto-logo" />
+      <h2>{{ cryptoDetails.name }} ({{ cryptoDetails.symbol.toUpperCase() }})</h2>
+    </div>
+    <div class="card-body">
+      <p><strong>Current Price:</strong> €{{ cryptoDetails.market_data.current_price.eur | number: '1.2-2' }}</p>
+      <p><strong>Market Cap:</strong> €{{ cryptoDetails.market_data.market_cap.eur | number: '1.0-0' }}</p>
+      <p><strong>24h Price Change:</strong>
+        <span [ngClass]="{
+          'positive': cryptoDetails.market_data.price_change_percentage_24h > 0,
+          'negative': cryptoDetails.market_data.price_change_percentage_24h < 0
+        }">
+          {{ cryptoDetails.market_data.price_change_percentage_24h | number: '1.2-2' }}%
+          <span *ngIf="cryptoDetails.market_data.price_change_percentage_24h > 0">&#x25B2;</span>
+          <span *ngIf="cryptoDetails.market_data.price_change_percentage_24h < 0">&#x25BC;</span>
+        </span>
+      </p>
+      <p><strong>Description:</strong></p>
+      <div *ngIf="cryptoDetails.description.en">
+        <span [innerHTML]="showFullDescription ? cryptoDetails.description.en : (cryptoDetails.description.en | slice: 0:100) + '...'"></span>
+        <button (click)="toggleDescription()" class="toggle-btn">
+          {{ showFullDescription ? 'Show Less' : 'Read More' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

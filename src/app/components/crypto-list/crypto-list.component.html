@@ -1,0 +1,56 @@
+<div class="dashboard">
+  <div class="header">
+    <h1>Crypto Currency Dashboard</h1>
+  </div>
+  <div *ngIf="isLoading" class="loading">
+    Loading crypto data...
+  </div>
+  <div *ngIf="!isLoading" class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Price (EUR)</th>
+        <th>Price Change (24h)</th>
+        <th>Market Cap</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let crypto of cryptoData; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          <a [routerLink]="['/crypto', crypto.id]" class="crypto-link">
+            <img
+              [src]="crypto.image"
+              alt="{{ crypto.name }}"
+              width="20"
+              height="20"
+              class="crypto-image"
+            />
+            {{ crypto.name }}
+          </a>
+        </td>
+        <td>{{ crypto.symbol }}</td>
+        <td>{{ crypto.current_price | number: '1.2-2' }}</td>
+        <td>
+            <span
+              [ngClass]="{
+                'positive': crypto.price_change_percentage_24h > 0,
+                'negative': crypto.price_change_percentage_24h < 0,
+                'equals': isApproximatelyZero(crypto.price_change_percentage_24h)
+              }"
+            >
+              {{ crypto.price_change_percentage_24h | number: '1.2-2' }}%
+              <span *ngIf="crypto.price_change_percentage_24h > 0">&#x25B2;</span>
+              <span *ngIf="crypto.price_change_percentage_24h < 0">&#x25BC;</span>
+              <span *ngIf="isApproximatelyZero(crypto.price_change_percentage_24h)">&equals;</span>
+            </span>
+        </td>
+        <td>{{ crypto.market_cap | number: '1.0-0' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
